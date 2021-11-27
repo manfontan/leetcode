@@ -23,5 +23,24 @@ func Search(nums []int, target int) int {
 }
 
 func FirstBadVersion(n int) int {
-	return 0
+	l := 1
+	r := n
+
+	for l < r {
+		m := (l + r) / 2
+
+		if isBadVersion(m) {
+			r = m
+		} else {
+			l = m + 1
+		}
+	}
+
+	return l
+}
+
+var BadVersion = 1
+
+func isBadVersion(version int) bool {
+	return version >= BadVersion
 }
