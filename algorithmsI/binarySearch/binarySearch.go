@@ -44,3 +44,20 @@ var BadVersion = 1
 func isBadVersion(version int) bool {
 	return version >= BadVersion
 }
+
+func SearchInsert(nums []int, target int) int {
+	l := 0
+	r := len(nums) - 1
+
+	for l <= r {
+		m := (l + r) / 2
+
+		if nums[m] < target {
+			l = m + 1
+		} else {
+			r = m - 1
+		}
+	}
+
+	return l
+}
