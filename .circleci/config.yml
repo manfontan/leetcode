@@ -19,6 +19,20 @@ jobs:
       - run:
           name: Run Tests
           command: go test
+  test2:
+    working_directory: ~/leetcode/algorithmsI/sorting
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: circleci/golang:1.16
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout:
+          path: ~/leetcode
+      - run:
+          name: Run Tests
+          command: go test
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -27,3 +41,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - test1
+      - test2
