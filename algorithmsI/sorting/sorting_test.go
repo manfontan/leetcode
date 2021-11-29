@@ -7,6 +7,7 @@ import (
 )
 
 func TestSortedSquares(t *testing.T) {
+	t.Parallel()
 
 	type testCase struct {
 		nums []int
@@ -28,4 +29,26 @@ func TestSortedSquares(t *testing.T) {
 			t.Errorf("got %v, want %v", got, tc.want)
 		}
 	}
+}
+
+func TestRotate(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		nums, want []int
+		k          int
+	}
+
+	testCases := []testCase{
+		{nums: []int{1, 2, 3, 4, 5, 6, 7}, want: []int{5, 6, 7, 1, 2, 3, 4}, k: 3},
+		{nums: []int{1, 2}, want: []int{2, 1}, k: 3},
+	}
+
+	for _, tc := range testCases {
+		got := sorting.Rotate(tc.nums, tc.k)
+		if !cmp.Equal(tc.want, got) {
+			t.Errorf("got %v, want %v", got, tc.want)
+		}
+	}
+
 }
