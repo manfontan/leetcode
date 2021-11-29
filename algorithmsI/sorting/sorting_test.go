@@ -52,3 +52,24 @@ func TestRotate(t *testing.T) {
 	}
 
 }
+
+func TestMoveZeroes(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		nums, want []int
+	}
+
+	testCases := []testCase{
+		{nums: []int{1, 0, 0, 2, 3, 0, 4}, want: []int{1, 2, 3, 4, 0, 0, 0}},
+		{nums: []int{0, 1, 0, 2, 3, 0, 4}, want: []int{1, 2, 3, 4, 0, 0, 0}},
+	}
+
+	for _, tc := range testCases {
+		got := sorting.MoveZeroes(tc.nums)
+
+		if !cmp.Equal(tc.want, got) {
+			t.Errorf("got %v, want %v", got, tc.want)
+		}
+	}
+}
