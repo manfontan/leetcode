@@ -25,3 +25,15 @@ func SortedSquares(nums []int) []int {
 
 	return sortedSquares
 }
+
+//Given an array, rotate the array to the right by k steps, where k is non-negative.
+func Rotate(nums []int, k int) []int {
+
+	t := make([]int, len(nums))
+
+	for i := 0; i < len(nums); i++ {
+		t[(i+k)%len(nums)] = nums[i]
+	}
+
+	return t
+}
