@@ -73,3 +73,25 @@ func TestMoveZeroes(t *testing.T) {
 		}
 	}
 }
+
+func TestTwoSum(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		nums, want []int
+		target     int
+	}
+
+	testCases := []testCase{
+		{nums: []int{2, 7, 11, 15}, want: []int{1, 2}, target: 9},
+		{nums: []int{2, 3, 4}, want: []int{1, 3}, target: 6},
+	}
+
+	for _, tc := range testCases {
+		got := sorting.TwoSum(tc.nums, tc.target)
+
+		if !cmp.Equal(tc.want, got) {
+			t.Errorf("got %v, want %v", got, tc.want)
+		}
+	}
+}
