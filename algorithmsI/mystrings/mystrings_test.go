@@ -26,3 +26,24 @@ func TestReverseString(t *testing.T) {
 		}
 	}
 }
+
+func TestReverseWords(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		input, want string
+	}
+
+	testCases := []testCase{
+		{input: "hello my friend", want: "olleh ym dneirf"},
+		{input: "Let's take LeetCode contest", want: "s'teL ekat edoCteeL tsetnoc"},
+	}
+
+	for _, tc := range testCases {
+		got := mystrings.ReverseWords(tc.input)
+
+		if got != tc.want {
+			t.Errorf("got %s, want %s", got, tc.want)
+		}
+	}
+}
