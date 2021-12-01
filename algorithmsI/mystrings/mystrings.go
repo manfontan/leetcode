@@ -36,7 +36,7 @@ func reverse(s string) string {
 }
 
 // Given a string s, find the length of the longest substring without repeating characters.
-// Time complexity : O(n) Index j will iterate nnn times.
+// Time complexity : O(n)
 // Space complexity (HashMap) : O(min(m,n)).
 func LengthOfLongestSubstring(s string) int {
 	m := map[byte]int{}
