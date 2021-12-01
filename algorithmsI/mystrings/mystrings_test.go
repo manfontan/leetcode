@@ -15,6 +15,7 @@ func TestReverseString(t *testing.T) {
 
 	testCases := []testCase{
 		{input: []byte("hello"), want: []byte("olleh")},
+		{input: []byte("Hannah"), want: []byte("hannaH")},
 	}
 
 	for _, tc := range testCases {
