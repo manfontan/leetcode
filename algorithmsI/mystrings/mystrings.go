@@ -15,9 +15,8 @@ func ReverseString(s []byte) []byte {
 
 // Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace
 // and initial word order.
-// Time complexity : O(n). where nnn is the length of the string.
-// Space complexity : O(n). resresres of size nnn is used.
-
+// Time complexity : O(n). where n is the length of the string.
+// Space complexity : O(n). resresres of size n is used.
 func ReverseWords(s string) string {
 	r := []string{}
 	for _, w := range strings.Split(s, " ") {
