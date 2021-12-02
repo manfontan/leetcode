@@ -72,3 +72,27 @@ func TestLenghtOfLongestSubstring(t *testing.T) {
 		}
 	}
 }
+
+func TestCheckInclusiion(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		s1, s2 string
+		want   bool
+	}
+
+	testCases := []testCase{
+		{s1: "ab", s2: "eidbaooo", want: true},
+		{s1: "ab", s2: "eidboaoo", want: false},
+		{s1: "ftp", s2: "ftpasdfasdf", want: true},
+		{s1: "ftp", s2: "asdfaftp", want: true},
+	}
+
+	for _, tc := range testCases {
+		got := mystrings.CheckInclusion(tc.s1, tc.s2)
+
+		if got != tc.want {
+			t.Errorf("got %v, want %v", got, tc.want)
+		}
+	}
+}
