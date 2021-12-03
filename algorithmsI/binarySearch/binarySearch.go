@@ -2,7 +2,7 @@ package binarySearch
 
 func Search(nums []int, target int) int {
 
-	low := 0
+	low :=0 // deliberately break fmt
 	high := len(nums) - 1
 
 	for low <= high {
