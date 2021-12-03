@@ -17,7 +17,7 @@ jobs:
       - checkout:
           path: ~/leetcode
       - run: Run fmt
-          name: "Enforce Go Formateed Code"
+          name: Enforce Go Formated Code
           command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
@@ -34,7 +34,7 @@ jobs:
       - checkout:
           path: ~/leetcode
       - run: Run fmt
-          name: "Enforce Go Formateed Code"
+          name: Enforce Go Formated Code
           command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
@@ -51,7 +51,7 @@ jobs:
       - checkout:
           path: ~/leetcode
       - run: Run fmt
-          name: "Enforce Go Formateed Code"
+          name: Enforce Go Formated Code
           command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
@@ -68,7 +68,7 @@ jobs:
       - checkout:
           path: ~/leetcode
       - run: Run fmt
-          name: "Enforce Go Formateed Code"
+          name: Enforce Go Formated Code
           command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
