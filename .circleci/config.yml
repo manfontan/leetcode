@@ -38,7 +38,10 @@ jobs:
           path: ~/leetcode
       - run: 
           name: Enforce Go Formated Code
-          command: "! gofmt -d -e 2>&1 | read"
+          command: >
+            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
+              exit 1
+            fi
       - run:
           name: Run Tests
           command: go test
@@ -55,7 +58,10 @@ jobs:
           path: ~/leetcode
       - run: 
           name: Enforce Go Formated Code
-          command: "! gofmt -d -e 2>&1 | read"
+          command: >
+            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
+              exit 1
+            fi
       - run:
           name: Run Tests
           command: go test
@@ -72,7 +78,10 @@ jobs:
           path: ~/leetcode
       - run:
           name: Enforce Go Formated Code
-          command: "! gofmt -d -e 2>&1 | read"
+          command: >
+            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
+              exit 1
+            fi
       - run:
           name: Run Tests
           command: go test
