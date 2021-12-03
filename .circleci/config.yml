@@ -69,7 +69,7 @@ jobs:
           path: ~/leetcode
       - run:
           name: Enforce Go Formated Code
-          command: "gofmt -d -e 2>&1"
+          command: "gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
           command: go test
