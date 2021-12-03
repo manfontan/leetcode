@@ -5,7 +5,8 @@ package breathFirstSearch
 // To perform a flood fill, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel,
 // plus any pixels connected 4-directionally to those pixels (also with the same color), and so on. Replace the color of all of the aforementioned pixels with newColor.
 // Return the modified image after performing the flood fill.
-
+// Time Complexity: O(N), where N is the number of pixels in the image. We might process every pixel.
+// Space Complexity: O(N), the size of the implicit call stack when calling dfs.
 func FloodFill(image [][]int, sr int, sc int, newColor int) [][]int {
 
 	color := image[sr][sc]

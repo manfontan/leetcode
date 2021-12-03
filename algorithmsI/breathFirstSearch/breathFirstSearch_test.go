@@ -2,8 +2,9 @@ package breathFirstSearch_test
 
 import (
 	"breathFirstSearch"
-	"github.com/google/go-cmp/cmp"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestFloodFill(t *testing.T) {
@@ -16,14 +17,14 @@ func TestFloodFill(t *testing.T) {
 
 	testCases := []testCase{
 		{
-			image: [][]int{[]int{1, 1, 1}, []int{1, 1, 0}, []int{1, 0, 1}},
+			image: [][]int{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}},
 			sr:    1, sc: 1, newColor: 2,
-			want: [][]int{[]int{2, 2, 2}, []int{2, 2, 0}, []int{2, 0, 1}},
+			want: [][]int{{2, 2, 2}, {2, 2, 0}, {2, 0, 1}},
 		},
 		{
-			image: [][]int{[]int{0, 0, 0}, []int{0, 0, 0}},
+			image: [][]int{{0, 0, 0}, {0, 0, 0}},
 			sr:    0, sc: 0, newColor: 2,
-			want: [][]int{[]int{2, 2, 2}, []int{2, 2, 2}},
+			want: [][]int{{2, 2, 2}, {2, 2, 2}},
 		},
 	}
 
