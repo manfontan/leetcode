@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout:
           path: ~/leetcode
-      - run: Run fmt
+      - run:
           name: Enforce Go Formated Code
           command: >
             if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
