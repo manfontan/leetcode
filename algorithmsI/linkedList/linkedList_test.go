@@ -42,3 +42,30 @@ func TestRemoveNthFromEnd(t *testing.T) {
 		}
 	}
 }
+
+func TestMiddleNode(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		head *linkedList.ListNode
+		want int
+	}
+
+	l := linkedList.List{Head: nil, Len: 0}
+	l.Init([]int{1, 2, 3, 4})
+	l2 := linkedList.List{Head: nil, Len: 0}
+	l2.Init([]int{1, 2, 4})
+
+	testCases := []testCase{
+		{head: l.Head, want: 3},
+		{head: l2.Head, want: 2},
+	}
+
+	for _, tc := range testCases {
+		got := linkedList.MiddleNode(tc.head).Val
+
+		if got != tc.want {
+			t.Errorf("got %d, want %d", got, tc.want)
+		}
+	}
+}

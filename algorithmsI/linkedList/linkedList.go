@@ -74,3 +74,19 @@ func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 
 	return d.Next
 }
+
+// Given the head of a singly linked list, return the middle node of the linked list.
+// If there are two middle nodes, return the second middle node.
+// Time Complexity: O(N), where NNN is the number of nodes in the given list.
+// Space Complexity: O(1), the space used by slow and fast.
+func MiddleNode(head *ListNode) *ListNode {
+
+	f, s := head, head
+
+	for f != nil && f.Next != nil {
+		f = f.Next.Next
+		s = s.Next
+	}
+
+	return s
+}
