@@ -16,12 +16,9 @@ jobs:
     steps:
       - checkout:
           path: ~/leetcode
-      - run: 
+      - run: Run fmt
           name: Enforce Go Formated Code
-          command: >
-            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
-              exit 1
-            fi
+          command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
           command: go test
@@ -38,10 +35,7 @@ jobs:
           path: ~/leetcode
       - run: 
           name: Enforce Go Formated Code
-          command: >
-            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
-              exit 1
-            fi
+          command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
           command: go test
@@ -58,10 +52,7 @@ jobs:
           path: ~/leetcode
       - run: 
           name: Enforce Go Formated Code
-          command: >
-            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
-              exit 1
-            fi
+          command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
           command: go test
@@ -76,12 +67,26 @@ jobs:
     steps:
       - checkout:
           path: ~/leetcode
-      - run:
+      - run: 
           name: Enforce Go Formated Code
-          command: >
-            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
-              exit 1
-            fi
+          command: "! gofmt -d -e 2>&1 | read"
+      - run:
+          name: Run Tests
+          command: go test
+  test5:
+    working_directory: ~/leetcode/algorithmsI/linkedList
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: circleci/golang:1.16
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout:
+          path: ~/leetcode
+      - run: 
+          name: Enforce Go Formated Code
+          command: "! gofmt -d -e 2>&1 | read"
       - run:
           name: Run Tests
           command: go test
@@ -95,3 +100,4 @@ workflows:
       - test2
       - test3
       - test4
+      - test5
