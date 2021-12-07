@@ -36,3 +36,38 @@ func TestFloodFill(t *testing.T) {
 		}
 	}
 }
+
+func TestMaxAreaOfIsland(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		grid [][]int
+		want int
+	}
+
+	testCases := []testCase{
+		{grid: [][]int{
+			{1, 1, 0},
+			{1, 0, 0},
+			{1, 0, 1}},
+			want: 4},
+		{grid: [][]int{
+			{0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+			{0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0},
+			{0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}},
+			want: 6},
+	}
+
+	for _, tc := range testCases {
+		got := breathFirstSearch.MaxAreaOfIsland(tc.grid)
+
+		if got != tc.want {
+			t.Errorf("got %d, want %d", got, tc.want)
+		}
+	}
+}

@@ -37,3 +37,29 @@ func dfs(image [][]int, r int, c int, color int, newColor int) {
 	}
 
 }
+
+func MaxAreaOfIsland(grid [][]int) int {
+	result := 0
+
+	for r := range grid {
+		for c := range grid[r] {
+			if grid[r][c] == 0 {
+				continue
+			}
+			a := area(grid, r, c)
+			if result < a {
+				result = a
+			}
+		}
+	}
+	return result
+}
+
+func area(grid [][]int, r, c int) int {
+	if r < 0 || c < 0 || r >= len(grid) || c >= len(grid[0]) || grid[r][c] == 0 {
+		return 0
+	}
+	grid[r][c] = 0
+
+	return 1 + area(grid, r, c-1) + area(grid, r, c+1) + area(grid, r+1, c) + area(grid, r-1, c)
+}
