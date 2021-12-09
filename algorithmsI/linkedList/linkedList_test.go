@@ -16,26 +16,19 @@ func TestRemoveNthFromEnd(t *testing.T) {
 		n    int
 	}
 
-	l := linkedList.List{Head: nil, Len: 0}
-	l.Init([]int{1, 2, 3, 4, 5, 6})
-	l2 := linkedList.List{Head: nil, Len: 0}
-	l2.Init([]int{1})
-	l3 := linkedList.List{Head: nil, Len: 0}
-	l3.Init([]int{1, 2})
-	l4 := linkedList.List{Head: nil, Len: 0}
-	l4.Init([]int{1, 2})
+	l := linkedList.List{}
 
 	testCases := []testCase{
-		{head: l.Head, want: []int{1, 2, 3, 4, 6}, n: 2},
-		{head: l2.Head, want: []int{}, n: 1},
-		{head: l3.Head, want: []int{1}, n: 1},
-		{head: l4.Head, want: []int{2}, n: 2},
+		{head: l.Init([]int{1, 2, 3, 4, 5, 6}), want: []int{1, 2, 3, 4, 6}, n: 2},
+		{head: l.Init([]int{1}), want: []int{}, n: 1},
+		{head: l.Init([]int{1, 2}), want: []int{1}, n: 1},
+		{head: l.Init([]int{1, 2}), want: []int{2}, n: 2},
 	}
 
 	for _, tc := range testCases {
 
 		got := linkedList.RemoveNthFromEnd(tc.head, tc.n)
-		lgot := linkedList.List{Head: got, Len: 0}
+		lgot := linkedList.List{Head: got}
 
 		if !cmp.Equal(lgot.ToSlice(), tc.want) {
 			t.Errorf("got %v, want %v", lgot.ToSlice(), tc.want)
@@ -51,14 +44,11 @@ func TestMiddleNode(t *testing.T) {
 		want int
 	}
 
-	l := linkedList.List{Head: nil, Len: 0}
-	l.Init([]int{1, 2, 3, 4})
-	l2 := linkedList.List{Head: nil, Len: 0}
-	l2.Init([]int{1, 2, 4})
+	l := linkedList.List{}
 
 	testCases := []testCase{
-		{head: l.Head, want: 3},
-		{head: l2.Head, want: 2},
+		{head: l.Init([]int{1, 2, 3, 4}), want: 3},
+		{head: l.Init([]int{1, 2, 4}), want: 2},
 	}
 
 	for _, tc := range testCases {
@@ -66,6 +56,31 @@ func TestMiddleNode(t *testing.T) {
 
 		if got != tc.want {
 			t.Errorf("got %d, want %d", got, tc.want)
+		}
+	}
+}
+
+func TestReverseList(t *testing.T) {
+
+	type testCase struct {
+		head *linkedList.ListNode
+		want []int
+	}
+
+	l := linkedList.List{}
+
+	testCases := []testCase{
+		{head: nil, want: []int{}},
+		{head: l.Init([]int{1, 2, 3, 4, 5}), want: []int{5, 4, 3, 2, 1}},
+		{head: l.Init([]int{1, 2, 3}), want: []int{3, 2, 1}},
+	}
+
+	for _, tc := range testCases {
+		got := linkedList.ReversList(tc.head)
+		lgot := linkedList.List{Head: got}
+
+		if !cmp.Equal(lgot.ToSlice(), tc.want) {
+			t.Errorf("got %v, want %v", lgot.ToSlice(), tc.want)
 		}
 	}
 }
