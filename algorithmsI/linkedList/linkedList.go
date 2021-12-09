@@ -32,10 +32,12 @@ func (L *List) Insert(key int) {
 	}
 }
 
-func (L *List) Init(keys []int) {
+func (L *List) Init(keys []int) *ListNode {
+	L.Len = 0
 	for _, v := range keys {
 		L.Insert(v)
 	}
+	return L.Head
 }
 
 func (L *List) ToSlice() []int {
@@ -89,4 +91,25 @@ func MiddleNode(head *ListNode) *ListNode {
 	}
 
 	return s
+}
+
+// Given the head of a singly linked list, reverse the list, and return the reversed list.
+// Time complexity : O(n). Assume that nnn is the list's length, the time complexity is O(n).
+// Space complexity : O(1).
+func ReverseList(head *ListNode) *ListNode {
+	var p, c *ListNode
+
+	if head == nil {
+		return head
+	}
+
+	p, c = nil, head
+
+	for c != nil {
+		t := c.Next
+		c.Next = p
+		p = c
+		c = t
+	}
+	return p
 }
