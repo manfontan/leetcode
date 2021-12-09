@@ -96,7 +96,7 @@ func MiddleNode(head *ListNode) *ListNode {
 // Given the head of a singly linked list, reverse the list, and return the reversed list.
 // Time complexity : O(n). Assume that nnn is the list's length, the time complexity is O(n).
 // Space complexity : O(1).
-func ReversList(head *ListNode) *ListNode {
+func ReverseList(head *ListNode) *ListNode {
 	var p, c *ListNode
 
 	if head == nil {

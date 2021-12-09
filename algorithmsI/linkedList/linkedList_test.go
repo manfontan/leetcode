@@ -76,7 +76,7 @@ func TestReverseList(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		got := linkedList.ReversList(tc.head)
+		got := linkedList.ReverseList(tc.head)
 		lgot := linkedList.List{Head: got}
 
 		if !cmp.Equal(lgot.ToSlice(), tc.want) {
