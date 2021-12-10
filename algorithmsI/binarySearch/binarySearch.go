@@ -8,18 +8,16 @@ func Search(nums []int, target int) int {
 	for low <= high {
 		median := (low + high) / 2
 
-		if target > nums[median] {
+		if target == nums[median] {
+			return median
+		} else if target > nums[median] {
 			low = median + 1
 		} else {
 			high = median - 1
 		}
 	}
 
-	if low == len(nums) || nums[low] != target {
-		return -1
-	}
-
-	return low
+	return -1
 }
 
 func FirstBadVersion(n int) int {
