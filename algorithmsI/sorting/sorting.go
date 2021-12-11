@@ -1,7 +1,5 @@
 package sorting
 
-import "math"
-
 // Description: Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
 // Time Complexity: O(N) where N is the lenth of the slice
 // Space Complexity: O(N) if we count the output O(1) otherwise.
@@ -14,7 +12,7 @@ func SortedSquares(nums []int) []int {
 
 	for i := len(nums) - 1; i >= 0; i-- {
 
-		if math.Abs(float64(nums[r])) > math.Abs(float64(nums[l])) {
+		if abs(nums[r]) > abs(nums[l]) {
 			sortedSquares[i] = nums[r] * nums[r]
 			r--
 		} else {
@@ -24,6 +22,13 @@ func SortedSquares(nums []int) []int {
 	}
 
 	return sortedSquares
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }
 
 //Given an array, rotate the array to the right by k steps, where k is non-negative.
