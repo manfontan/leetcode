@@ -84,3 +84,30 @@ func TestReverseList(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeTwoLists(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		list1, list2 *linkedList.ListNode
+		want         []int
+	}
+
+	l := linkedList.List{}
+
+	testCases := []testCase{
+		{list1: l.Init([]int{1, 3, 4}), list2: l.Init([]int{2, 5, 6}), want: []int{1, 2, 3, 4, 5, 6}},
+		{list1: l.Init([]int{1, 2, 4}), list2: l.Init([]int{1, 3, 4}), want: []int{1, 1, 2, 3, 4, 4}},
+	}
+
+	for _, tc := range testCases {
+
+		got := linkedList.MergeTwoLists(tc.list1, tc.list2)
+		lgot := linkedList.List{Head: got}
+
+		if !cmp.Equal(lgot.ToSlice(), tc.want) {
+			t.Errorf("got %v, want %v", lgot.ToSlice(), tc.want)
+		}
+
+	}
+}
