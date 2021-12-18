@@ -22,16 +22,16 @@ func dfs(image [][]int, r int, c int, color int, newColor int) {
 
 	if image[r][c] == color {
 		image[r][c] = newColor
-		if r > 0 {
+		if r-1 >= 0 {
 			dfs(image, r-1, c, color, newColor)
 		}
-		if c > 0 {
+		if c-1 >= 0 {
 			dfs(image, r, c-1, color, newColor)
 		}
-		if r < len(image)-1 {
+		if r+1 < len(image) {
 			dfs(image, r+1, c, color, newColor)
 		}
-		if c < len(image[0])-1 {
+		if c+1 < len(image[0]) {
 			dfs(image, r, c+1, color, newColor)
 		}
 	}
