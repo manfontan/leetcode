@@ -26,3 +26,18 @@ func ReverseBits(n uint32) uint32 {
 
 	return n
 }
+
+//Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+// The run time depends on the number of 1-bits in nnn. In the worst case, all bits in nnn are 1-bits. In case of a 32-bit integer, the run time is O(1).
+// The space complexity is O(1), since no additional space is allocated.
+func HammingWeight(n uint32) int {
+
+	var result int
+
+	for n != 0 {
+		result++
+		n &= (n - 1)
+	}
+
+	return result
+}
