@@ -7,6 +7,7 @@ import (
 )
 
 func TestIsPowerOfTwo(t *testing.T) {
+	t.Parallel()
 
 	type testCase struct {
 		n    int
@@ -35,6 +36,7 @@ func TestIsPowerOfTwo(t *testing.T) {
 }
 
 func TestReverseBits(t *testing.T) {
+	t.Parallel()
 
 	type testCase struct {
 		n, want uint32
@@ -60,4 +62,26 @@ func parseUint32(s string) uint32 {
 		panic(err)
 	}
 	return uint32(u)
+}
+
+func TestHammingWeight(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		n    uint32
+		want int
+	}
+
+	testCases := []testCase{
+		{n: 000000000000000000000000000001011, want: 3},
+		{n: 000000000000000000000000000000000, want: 0},
+	}
+
+	for _, tc := range testCases {
+		got := bitwise.HammingWeight(tc.n)
+
+		if got != tc.want {
+			t.Errorf("got %d, want %d", got, tc.want)
+		}
+	}
 }
