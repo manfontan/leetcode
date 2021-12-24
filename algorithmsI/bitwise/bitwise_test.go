@@ -61,3 +61,26 @@ func parseUint32(s string) uint32 {
 	}
 	return uint32(u)
 }
+
+func TestSingleNumber(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		nums []int
+		want int
+	}
+
+	testCases := []testCase{
+		{nums: []int{2, 2, 1}, want: 1},
+		{nums: []int{2, 2, 3, 4, 4}, want: 3},
+		{nums: []int{2, 2, 3, 4, 4, 7, 3}, want: 7},
+	}
+
+	for _, tc := range testCases {
+		got := bitwise.SingleNumber(tc.nums)
+
+		if got != tc.want {
+			t.Errorf("got %d, want %d", got, tc.want)
+		}
+	}
+}

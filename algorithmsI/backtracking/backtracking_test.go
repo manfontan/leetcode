@@ -8,6 +8,7 @@ import (
 )
 
 func TestPermute(t *testing.T) {
+	t.Parallel()
 
 	type testCase struct {
 		nums []int
