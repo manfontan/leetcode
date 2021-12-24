@@ -27,6 +27,16 @@ func ReverseBits(n uint32) uint32 {
 	return n
 }
 
+// Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+// You must implement a solution with a linear runtime complexity and use only constant extra space.
+func SingleNumber(nums []int) int {
+	var result int
+	for _, n := range nums {
+		result ^= n
+	}
+	return result
+}
+
 //Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
 // The run time depends on the number of 1-bits in nnn. In the worst case, all bits in nnn are 1-bits. In case of a 32-bit integer, the run time is O(1).
 // The space complexity is O(1), since no additional space is allocated.
