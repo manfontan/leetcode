@@ -145,8 +145,28 @@ jobs:
       - run:
           name: Run Tests
           command: go test
-  test8:
+  test_backtracking:
     working_directory: ~/leetcode/algorithmsI/backtracking
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: circleci/golang:1.16
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout:
+          path: ~/leetcode
+      - run: 
+          name: Enforce Go Formated Code
+          command: >
+            if [ "$(gofmt -d -e . | wc -l)" -gt 0 ]; then
+              exit 1
+            fi
+      - run:
+          name: Run Tests
+          command: go test
+  test_dynamic_programming:
+    working_directory: ~/leetcode/algorithmsI/dynamicProgramming
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -178,4 +198,5 @@ workflows:
       - test5
       - test6
       - test7
-      - test8
+      - test_backtracking
+      - test_dynamic_programming
