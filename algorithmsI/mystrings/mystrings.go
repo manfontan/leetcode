@@ -64,7 +64,6 @@ func max(a, b int) int {
 // In other words, return true if one of s1's permutations is the substring of s2.
 // Time complexity: O(l1+26*l1*(l2−l1)). hashmap contains atmost 26 keys(number of lowercase letters). where l1 is the length of string s1 and l2 is the length of string s2.
 // Space complexity: O(1). Hashmaps contains at most 26 key-value pairs.
-
 func CheckInclusion(s1 string, s2 string) bool {
 
 	m1 := map[byte]int{}

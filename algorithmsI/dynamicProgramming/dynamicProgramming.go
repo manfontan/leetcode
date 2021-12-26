@@ -1,5 +1,10 @@
 package dynamicProgramming
 
+import (
+	"strings"
+	"unicode"
+)
+
 // Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
 // The distance between two adjacent cells is 1.
 // Time complexity: O(r⋅c)
@@ -52,4 +57,26 @@ func min(a, b int) int {
 		return b
 	}
 	return a
+}
+
+// Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.
+// Return a list of all possible strings we could create. Return the output in any order.
+func LetterCasePermutation(s string) []string {
+	result := []string{""}
+
+	for _, c := range s {
+		n := len(result)
+		if unicode.IsLetter(c) {
+			for i := 0; i < n; i++ {
+				result = append(result, result[i][:])
+				result[i] += strings.ToLower(string(c))
+				result[n+i] += strings.ToUpper(string(c))
+			}
+		} else {
+			for i := 0; i < n; i++ {
+				result[i] += string(c)
+			}
+		}
+	}
+	return result
 }
