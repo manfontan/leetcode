@@ -1,9 +1,10 @@
 package mystrings_test
 
 import (
-	"github.com/google/go-cmp/cmp"
 	"mystrings"
 	"testing"
+
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestReverseString(t *testing.T) {
@@ -73,7 +74,7 @@ func TestLenghtOfLongestSubstring(t *testing.T) {
 	}
 }
 
-func TestCheckInclusiion(t *testing.T) {
+func TestCheckInclusion(t *testing.T) {
 	t.Parallel()
 
 	type testCase struct {

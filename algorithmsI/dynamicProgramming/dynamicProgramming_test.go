@@ -26,3 +26,24 @@ func TestUpdateMatrix(t *testing.T) {
 		}
 	}
 }
+
+func TestLetterCasePermutation(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		s    string
+		want []string
+	}
+
+	testCases := []testCase{
+		{s: "a1b2", want: []string{"a1b2", "A1b2", "a1B2", "A1B2"}},
+	}
+
+	for _, tc := range testCases {
+		got := dynamicProgramming.LetterCasePermutation(tc.s)
+
+		if !cmp.Equal(got, tc.want) {
+			t.Errorf("got %v, want %v", got, tc.want)
+		}
+	}
+}
